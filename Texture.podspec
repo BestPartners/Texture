@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'http://texturegroup.org'
   spec.authors      = { 'Huy Nguyen' => 'hi@huynguyen.dev', 'Garrett Moon' => 'garrett@excitedpixel.com', 'Scott Goodson' => 'scottgoodson@gmail.com', 'Michael Schneider' => 'mischneider1@gmail.com', 'Adlai Holler' => 'adlai@icloud.com' }
   spec.summary      = 'Smooth asynchronous user interfaces for iOS apps.'
-  spec.source       = { :git => 'https://github.com/TextureGroup/Texture.git', :tag => spec.version.to_s }
+  spec.source       = { :git => 'https://github.com/BestPartners/Texture.git', :tag => 2.8.1 }
   spec.module_name  = 'AsyncDisplayKit'
   spec.header_dir   = 'AsyncDisplayKit'
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
   end
   
   spec.subspec 'PINRemoteImage' do |pin|
-    pin.dependency 'PINRemoteImage/iOS', '= 3.0.0-beta.13'
+    pin.dependency 'PINRemoteImage/iOS', '~> 3.0'
     pin.dependency 'PINRemoteImage/PINCache'
     pin.dependency 'Texture/Core'
   end

@@ -52,6 +52,12 @@
   return self;
 }
 
+// SUGAR: Modify By SUGAR
+- (void) le_prepared: (ASDisplayNode *) node {
+    _node = node;
+    [self _initializeInstance];
+}
+
 #pragma clang diagnostic pop
 
 - (instancetype)initWithNode:(ASDisplayNode *)node

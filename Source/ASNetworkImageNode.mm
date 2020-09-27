@@ -738,6 +738,15 @@ static std::atomic_bool _useMainThreadDelegateCallbacks(true);
             if (animatedImageData && strongSelf->_downloaderFlags.downloaderImplementsAnimatedImage) {
               id animatedImage = [strongSelf->_downloader animatedImageWithData:animatedImageData];
               [strongSelf _locked_setAnimatedImage:animatedImage];
+              //SUGAR: Modify By SUGAR
+              //执行新增的代理方法：didLoadAnimatedImage
+              if ([delegate respondsToSelector:@selector(imageNode:didLoadAnimatedImage:)]) {
+                  ASPerformBlockOnMainThread(^{
+                    if (auto strongSelf = weakSelf) {
+                        [delegate imageNode:strongSelf didLoadAnimatedImage:animatedImage];
+                    }
+                  });
+              }
             } else {
               newImage = [imageContainer asdk_image];
               [strongSelf _locked__setImage:newImage];
@@ -794,7 +803,9 @@ static std::atomic_bool _useMainThreadDelegateCallbacks(true);
             return;
           }
           
-          if ([imageContainer asdk_image] == nil && self->_downloader != nil) {
+          //SUGAR: Modify By SUGAR
+          //添加判断条件：[imageContainer asdk_animatedImageData] == nil
+          if ([imageContainer asdk_image] == nil && [imageContainer asdk_animatedImageData] == nil && self->_downloader != nil) {
             if (delegateWillLoadImageFromNetwork) {
               [delegate imageNodeWillLoadImageFromNetwork:self];
             }

@@ -68,16 +68,10 @@ NSDictionary *NSAttributedStringAttributesForCoreTextAttributes(NSDictionary *co
 
     // kCTFontAttributeName -> NSFontAttributeName
     if ([coreTextKey isEqualToString:(NSString *)kCTFontAttributeName]) {
-      CTFontRef coreTextFont = (__bridge CTFontRef)coreTextValue;
-      NSString *fontName = (__bridge_transfer NSString *)CTFontCopyPostScriptName(coreTextFont);
-      CGFloat fontSize = CTFontGetSize(coreTextFont);
-      UIFont *font = [UIFont fontWithName:fontName size:fontSize];
-      ASDisplayNodeCAssertNotNil(font, @"unable to load font %@ with size %f", fontName, fontSize);
-      if (font == nil) {
-        // Gracefully fail if we were unable to load the font.
-        font = [UIFont systemFontOfSize:fontSize];
-      }
-      cleanAttributes[NSFontAttributeName] = font;
+        //SUGAR: Modify By SUGAR，以下两行代码参照github上提交日志用于兼容iOS13字体显示问题，待Texture release版发布
+        // Its reference type, CTFontRef, is toll-free bridged with UIFont in iOS and NSFont in OS X
+        CTFontRef coreTextFont = (__bridge CTFontRef)coreTextValue;
+        cleanAttributes[NSFontAttributeName] = (__bridge UIFont *)coreTextFont;
     }
     // kCTKernAttributeName -> NSKernAttributeName
     else if ([coreTextKey isEqualToString:(NSString *)kCTKernAttributeName]) {

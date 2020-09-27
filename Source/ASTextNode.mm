@@ -795,7 +795,9 @@ static NSArray *DefaultLinkAttributeNames() {
         ASLockScopeSelf();
         ASTextKitRenderer *renderer = [self _locked_renderer];
 
-        NSArray *highlightRects = [renderer rectsForTextRange:highlightRange measureOption:ASTextKitRendererMeasureOptionBlock];
+        //NSArray *highlightRects = [renderer rectsForTextRange:highlightRange measureOption:ASTextKitRendererMeasureOptionBlock];
+        // SUGAR: Modify By SUGAR 这里默认高亮区域计算规则参数改为LineHeight，以上注释代码为原始代码
+        NSArray *highlightRects = [renderer rectsForTextRange:highlightRange measureOption:ASTextKitRendererMeasureOptionLineHeight];
         NSMutableArray *converted = [NSMutableArray arrayWithCapacity:highlightRects.count];
         for (NSValue *rectValue in highlightRects) {
           UIEdgeInsets shadowPadding = renderer.shadower.shadowPadding;

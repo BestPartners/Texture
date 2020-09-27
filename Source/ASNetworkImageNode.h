@@ -231,6 +231,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)imageNodeDidFinishDecoding:(ASNetworkImageNode *)imageNode;
 
+/**
+ * SUGAR: Modify By SUGAR
+ * 新增一个明确的动画图片加载完成回调方法
+ *
+ * @param imageNode The sender.
+ * @param animatedImage The newly-loaded image.
+ *
+ * @discussion Called on the main thread.
+ */
+- (void)imageNode:(ASNetworkImageNode *)imageNode didLoadAnimatedImage:(id <ASAnimatedImageProtocol>)animatedImage;
+
 
 @end
 
