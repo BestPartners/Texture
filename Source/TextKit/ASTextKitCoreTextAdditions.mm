@@ -68,7 +68,7 @@ NSDictionary *NSAttributedStringAttributesForCoreTextAttributes(NSDictionary *co
 
     // kCTFontAttributeName -> NSFontAttributeName
     if ([coreTextKey isEqualToString:(NSString *)kCTFontAttributeName]) {
-        //SUGAR: Modify By SUGAR，以下两行代码参照github上提交日志用于兼容iOS13字体显示问题，待Texture release版发布
+        //BestPartners: Modify By BestPartners，以下两行代码参照github上提交日志用于兼容iOS13字体显示问题，待Texture release版发布
         // Its reference type, CTFontRef, is toll-free bridged with UIFont in iOS and NSFont in OS X
         CTFontRef coreTextFont = (__bridge CTFontRef)coreTextValue;
         cleanAttributes[NSFontAttributeName] = (__bridge UIFont *)coreTextFont;

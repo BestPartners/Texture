@@ -738,7 +738,7 @@ static std::atomic_bool _useMainThreadDelegateCallbacks(true);
             if (animatedImageData && strongSelf->_downloaderFlags.downloaderImplementsAnimatedImage) {
               id animatedImage = [strongSelf->_downloader animatedImageWithData:animatedImageData];
               [strongSelf _locked_setAnimatedImage:animatedImage];
-              //SUGAR: Modify By SUGAR
+              //BestPartners: Modify By BestPartners
               //执行新增的代理方法：didLoadAnimatedImage
               if ([delegate respondsToSelector:@selector(imageNode:didLoadAnimatedImage:)]) {
                   ASPerformBlockOnMainThread(^{
@@ -803,7 +803,7 @@ static std::atomic_bool _useMainThreadDelegateCallbacks(true);
             return;
           }
           
-          //SUGAR: Modify By SUGAR
+          //BestPartners: Modify By BestPartners
           //添加判断条件：[imageContainer asdk_animatedImageData] == nil
           if ([imageContainer asdk_image] == nil && [imageContainer asdk_animatedImageData] == nil && self->_downloader != nil) {
             if (delegateWillLoadImageFromNetwork) {

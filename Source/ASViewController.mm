@@ -52,7 +52,7 @@
   return self;
 }
 
-// SUGAR: Modify By SUGAR
+// BestPartners: Modify By BestPartners
 - (void) le_prepared: (ASDisplayNode *) node {
     _node = node;
     [self _initializeInstance];

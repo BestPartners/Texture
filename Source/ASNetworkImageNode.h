@@ -232,7 +232,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)imageNodeDidFinishDecoding:(ASNetworkImageNode *)imageNode;
 
 /**
- * SUGAR: Modify By SUGAR
+ * BestPartners: Modify By BestPartners
  * 新增一个明确的动画图片加载完成回调方法
  *
  * @param imageNode The sender.
