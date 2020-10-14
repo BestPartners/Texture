@@ -38,9 +38,10 @@ typedef ASTraitCollection * _Nonnull (^ASDisplayTraitsForTraitWindowSizeBlock)(C
  */
 - (instancetype)initWithNode:(DisplayNodeType)node NS_DESIGNATED_INITIALIZER;
 
-// BestPartners: Modify By BestPartners
-- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
-- (void) le_prepared: (ASDisplayNode *) node;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+// BestPartners: Modify By BestPartners 后置node设置
+- (ASDisplayNode *) le_ext_node;
 
 NS_ASSUME_NONNULL_END
 
@@ -85,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Automatically adjust range mode based on view events. If you set this to YES, the view controller or its node
- * must conform to the ASRangeControllerUpdateRangeProtocol. 
+ * must conform to the ASRangeControllerUpdateRangeProtocol.
  *
  * Default value is YES *if* node or view controller conform to ASRangeControllerUpdateRangeProtocol otherwise it is NO.
  */

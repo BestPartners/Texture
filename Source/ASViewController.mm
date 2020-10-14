@@ -52,12 +52,6 @@
   return self;
 }
 
-// BestPartners: Modify By BestPartners
-- (void) le_prepared: (ASDisplayNode *) node {
-    _node = node;
-    [self _initializeInstance];
-}
-
 #pragma clang diagnostic pop
 
 - (instancetype)initWithNode:(ASDisplayNode *)node
@@ -70,6 +64,23 @@
   [self _initializeInstance];
 
   return self;
+}
+
+- (instancetype)init {
+  if (!(self = [super initWithNibName:nil bundle:nil])) {
+    return nil;
+  }
+  // BestPartners: Modify By BestPartners 后置node设置
+  _node = self.le_ext_node;
+  //
+  [self _initializeInstance];
+
+  return self;
+}
+
+// BestPartners: Modify By BestPartners 后置node设置
+- (ASDisplayNode *) le_ext_node {
+    return [ASDisplayNode new];
 }
 
 - (void)_initializeInstance
